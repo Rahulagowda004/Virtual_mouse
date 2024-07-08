@@ -1,39 +1,16 @@
 import cv2
 import mediapipe as mp
 import pyautogui
-import threading
 
 class HandMouseController:
-    def __init__(self, dpi_scale=2.0):
+    def __init__(self, dpi_scale=1):
         # Initialize Mediapipe Hands and Drawing
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands()
         self.mp_drawing = mp.solutions.drawing_utils
 
-        # Initialize the video capture
-        self.cap = cv2.VideoCapture(0)
-        ret, frame = self.cap.read()
-        if not ret:
-            raise Exception("Unable to read from the webcam")
-        
-        self.height, self.width, _ = frame.shape
-
-        # Initialize a variable to store the current frame
-        self.current_frame = None
-
         # Define the DPI scaling factor
         self.DPI_SCALE = dpi_scale
-
-        # Start the frame capture thread
-        self.capture_thread = threading.Thread(target=self.capture_frames)
-        self.capture_thread.start()
-
-    def capture_frames(self):
-        while True:
-            ret, frame = self.cap.read()
-            if not ret:
-                break
-            self.current_frame = frame
 
     def process_frame(self, frame):
         # Flip the frame horizontally for a later selfie-view display
@@ -71,22 +48,3 @@ class HandMouseController:
                     pyautogui.click()
 
         return image
-
-    def run(self):
-        while True:
-            if self.current_frame is not None:
-                processed_frame = self.process_frame(self.current_frame)
-
-                # Display the frame
-                cv2.imshow('Hand Tracking', processed_frame)
-
-            if cv2.waitKey(1) & 0xFF == 27:  # Exit on pressing 'Esc'
-                break
-
-        # Release resources
-        self.cap.release()
-        cv2.destroyAllWindows()
-
-if __name__ == "__main__":
-    controller = HandMouseController(dpi_scale=2.0)
-    controller.run()
