@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hand Tracking Control</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
   </head>
   <body>
-    <h1>Hand Tracking Control</h1>
-    <button id="startButton">Start</button>
-    <button id="stopButton">Stop</button>
+    <div class="container">
+      <h1>Hand Tracking Control</h1>
+      <div class="button-container">
+        <button id="startButton" class="control-button start">Start</button>
+        <button id="stopButton" class="control-button stop">Stop</button>
+      </div>
+    </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
