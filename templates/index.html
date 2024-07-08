@@ -10,15 +10,17 @@
     />
   </head>
   <body>
-    <div class="header">
-      <h1>VIMO</h1>
-    </div>
-    <div class="container-wrapper">
+    <header class="header">
+      <div class="header-content">
+        <h1>VIMO</h1>
+      </div>
+    </header>
+    <main class="main-content">
       <div class="container">
         <h2>Hand Tracking Control</h2>
         <button id="toggleButton" class="round-button">Start</button>
       </div>
-    </div>
+    </main>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
