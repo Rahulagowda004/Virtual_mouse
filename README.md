@@ -4,7 +4,7 @@
 git clone https://github.com/Rahulagowda004/Virtual_mouse.git
 ```
 
-### STEP 02- Create a conda environment after opening the repository
+### STEP 02- Create a virtual environment after opening the repository
 
 ```bash
 python -m venv .venv
