@@ -1,27 +1,53 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #e0e0e0; /* Light gray background */
+  background-color: #f0f2f5;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
 }
 
-.container {
+.header {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px 0;
+  width: 100%;
   text-align: center;
-  background: #ffffff; /* White background for container */
-  padding: 30px;
-  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's on top */
 }
 
-h1 {
+.header h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  text-align: center;
+  margin-top: 100px; /* Adjust as needed */
+}
+
+.container h2 {
   color: #333;
+  margin-bottom: 20px;
 }
 
 .button-container {
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .control-button {
@@ -33,7 +59,6 @@ h1 {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease;
@@ -44,7 +69,7 @@ h1 {
 }
 
 .control-button.start {
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
 }
 
 .control-button.start:hover {
@@ -52,7 +77,7 @@ h1 {
 }
 
 .control-button.stop {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
 }
 
 .control-button.stop:hover {
