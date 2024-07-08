@@ -7,6 +7,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 .header {
@@ -19,7 +20,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Ensure it's on top */
+  z-index: 1000;
 }
 
 .header h1 {
@@ -29,57 +30,38 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.container {
-  background: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  text-align: center;
-  margin-top: 100px; /* Adjust as needed */
-}
-
-.container h2 {
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.button-container {
+.container-wrapper {
+  flex: 1;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
+  width: 100%;
 }
 
-.control-button {
-  background-color: #008cba;
+.round-button {
+  background-color: #4caf50;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 50%;
   transition: background-color 0.3s ease;
+  width: 100px;
+  height: 100px;
 }
 
-.control-button:hover {
-  background-color: #005f5f;
-}
-
-.control-button.start {
-  background-color: #4caf50;
-}
-
-.control-button.start:hover {
-  background-color: #357a38;
-}
-
-.control-button.stop {
+.round-button.stop {
   background-color: #f44336;
 }
 
-.control-button.stop:hover {
+.round-button:hover {
+  background-color: #357a38;
+}
+
+.round-button.stop:hover {
   background-color: #ba000d;
 }
