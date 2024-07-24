@@ -24,9 +24,10 @@ class HandMouseController:
             for hand_landmarks in results.multi_hand_landmarks:
                 self.mp_drawing.draw_landmarks(image, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
 
-                # Extract landmarks for the index finger tip and thumb tip
+                # Extract landmarks for the index finger tip, thumb tip, and middle finger tip
                 index_finger_tip = hand_landmarks.landmark[self.mp_hands.HandLandmark.INDEX_FINGER_TIP]
                 thumb_tip = hand_landmarks.landmark[self.mp_hands.HandLandmark.THUMB_TIP]
+                middle_finger_tip = hand_landmarks.landmark[self.mp_hands.HandLandmark.MIDDLE_FINGER_TIP]
 
                 # Convert normalized coordinates to screen coordinates
                 screen_width, screen_height = pyautogui.size()
@@ -40,11 +41,16 @@ class HandMouseController:
                 # Move the mouse
                 pyautogui.moveTo(x, y)
 
-                # Check distance between index finger tip and thumb tip
-                distance = ((index_finger_tip.x - thumb_tip.x) ** 2 + (index_finger_tip.y - thumb_tip.y) ** 2) ** 0.5
+                # Check distance between index finger tip and thumb tip for left click
+                left_click_distance = ((index_finger_tip.x - thumb_tip.x) ** 2 + (index_finger_tip.y - thumb_tip.y) ** 2) ** 0.5
 
-                # Click if distance is less than a threshold
-                if distance < 0.05:
+                if left_click_distance < 0.05:
                     pyautogui.click()
+
+                # Check distance between thumb tip and middle finger tip for right click
+                right_click_distance = ((middle_finger_tip.x - thumb_tip.x) ** 2 + (middle_finger_tip.y - thumb_tip.y) ** 2) ** 0.5
+
+                if right_click_distance < 0.05:
+                    pyautogui.rightClick()
 
         return image
